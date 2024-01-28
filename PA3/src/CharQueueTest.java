@@ -54,14 +54,15 @@ class CharQueueTest {
     void enqueueTest() {
         empty.enqueue('S');
         assertEquals('S', empty.peek());
+        assertFalse(empty.isEmpty());
         full.enqueue('C');
-        char[] expected1 = new char[] {'S', 'm', 'i', 'l', 'e', 'C', '\0', '\0', '\0', '\0'};
-        assertArrayEquals(expected1, full.getCircularArray());
+        assertEquals('S', full.peek());
+        assertEquals(6, full.size());
         notFull.enqueue('e');
         notFull.enqueue('C');
         notFull.enqueue('l');
-        char[] expected2 = new char[] {'C', 'l', 'o', 'v', 'e'};
-        assertArrayEquals(expected2, notFull.getCircularArray());
+        assertEquals('o', notFull.peek());
+        assertEquals(5, notFull.size());
     }
 
     @org.junit.jupiter.api.Test

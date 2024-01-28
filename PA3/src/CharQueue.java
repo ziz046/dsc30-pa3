@@ -144,13 +144,4 @@ public class CharQueue {
         }
         return elem;
     }
-
-    /**
-     * The getter method to gets the queue.
-     *
-     * @return the character queue.
-     */
-    public char[] getCircularArray() {
-        return circularArray;
-    }
 }
