@@ -11,7 +11,7 @@
  * @since Jan. 26, 2024
  */
 class ProteinSynthesis {
-
+    private static final int CODON_SIZE = 3;
     /**
      * Creates an RNA by replacing each occurrence of ‘T’ with ‘U’,
      * saves the result in a queue and returns it.
@@ -22,7 +22,7 @@ class ProteinSynthesis {
      */
     public CharQueue transcribeDNA(String dna) {
         int len = dna.length();
-        if (len % 3 != 0) {
+        if (len % CODON_SIZE != 0) {
             throw new IllegalArgumentException("DNA sequence is not valid.");
         }
         char[] dnaCharArr = dna.toCharArray();
@@ -46,19 +46,19 @@ class ProteinSynthesis {
      */
     public CharQueue translateRNA(CharQueue rna) {
         int len = rna.size();
-        int codonsLen = len / 3;
+        int codonsLen = len / CODON_SIZE;
         int startIdx = -1;
         int stopIdx = -1;
         String[] codons = new String[codonsLen];
         char[] rawAminoAcid= new char[codonsLen];
         CharQueue aminoAcid = new CharQueue(codonsLen);
 
-        for (int i = 0; i < len - 2; i = i + 3) {
-            char[] temp = new char[3];
+        for (int i = 0; i < len - 2; i = i + CODON_SIZE) {
+            char[] temp = new char[CODON_SIZE];
             temp[0] = rna.dequeue();
             temp[1] = rna.dequeue();
             temp[2] = rna.dequeue();
-            codons[i/3] = new String(temp);
+            codons[i/CODON_SIZE] = new String(temp);
         }
 
         for (int j = 0; j < codonsLen; j++) {

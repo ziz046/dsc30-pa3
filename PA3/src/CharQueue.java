@@ -35,6 +35,7 @@ public class CharQueue {
      * Creates a new queue with the specified capacity.
      *
      * @param capacity the number of elements the CharQueue can hold.
+     * @throws IllegalArgumentException if the capacity is less than 1.
      */
     public CharQueue(int capacity) {
         if (capacity < 1) {
